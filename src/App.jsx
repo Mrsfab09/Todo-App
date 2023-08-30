@@ -5,18 +5,45 @@ import { TodoItem } from "./components/TodoItem/TodoItem";
 import { getSubHeading } from "./utils/getSubHeading";
 
 function App() {
+  function addItem(newTodoName) {
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { name: newTodoName, done: false, id: prevTodos.at(-1).id + 1 },
+    ]);
+    setIsFormShown(false);
+  }
+
+  function removeItem(id) {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  }
+
+  function doneItem(id) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id !== id) {
+          return todo;
+        }
+
+        return {
+          ...todo,
+          done: true,
+        };
+      })
+    );
+  }
+
   const [isFormShown, setIsFormShown] = useState(false);
 
-  const todos = [
+  const [todos, setTodos] = useState([
     { name: "Zapłacić rachunki", done: false, id: 1 },
     { name: "Wyrzucić śmieci", done: true, id: 2 },
-  ];
+  ]);
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div>
-          <h1>Do zrobienia</h1>
+          <h1>Todo List</h1>
           <h2>{getSubHeading(todos.length)}</h2>
         </div>
         {!isFormShown && (
@@ -31,15 +58,17 @@ function App() {
         )}
       </header>
       {isFormShown && (
-        <Form
-          onFormSubmit={() => {
-            alert("test");
-          }}
-        />
+        <Form onFormSubmit={(newTodoName) => addItem(newTodoName)} />
       )}
       <ul>
         {todos.map(({ name, done, id }) => (
-          <TodoItem key={id} name={name} done={done} />
+          <TodoItem
+            key={id}
+            name={name}
+            done={done}
+            onDeleteButtonClick={() => removeItem(id)}
+            onDoneButtonClick={() => doneItem(id)}
+          />
         ))}
       </ul>
     </div>

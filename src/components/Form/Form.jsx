@@ -8,7 +8,7 @@ export function Form({ onFormSubmit }) {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        onFormSubmit();
+        onFormSubmit(inputValue);
       }}
       className={styles.form}
     >
@@ -16,9 +16,10 @@ export function Form({ onFormSubmit }) {
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
         className={styles.input}
+        placeholder="Add new task. . ."
         type="text"
       />
-      <Button>Dodaj</Button>
+      <Button>Add</Button>
     </form>
   );
 }
