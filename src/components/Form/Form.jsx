@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../Button/Button";
+import { FaPlus } from "react-icons/fa";
 import styles from "./Form.module.css";
 
 export function Form({ onFormSubmit }) {
@@ -19,7 +20,9 @@ export function Form({ onFormSubmit }) {
         placeholder="Add new task. . ."
         type="text"
       />
-      <Button>Add</Button>
+      <Button>
+        <FaPlus />
+      </Button>
     </form>
   );
 }
