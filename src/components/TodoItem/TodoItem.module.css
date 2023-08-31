@@ -1,12 +1,13 @@
 .item {
+  background-color: white;
+  border-radius: 4px;
+  width: 600px;
+  padding: 20px 30px;
   list-style-type: none;
   display: flex;
   align-items: center;
-  gap: 8px;
-  border-top: solid 1px black;
   margin-top: 16px;
-  padding-top: 16px;
-  width: 400px;
+  gap: 10px;
 }
 .name {
   width: 100%;

@@ -3,7 +3,10 @@
   gap: 12px;
   margin-top: 24px;
 }
-
+.wrongMessage {
+  color: red;
+  background-color: black;
+}
 .input {
   width: 100%;
   padding: 8px;

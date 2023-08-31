@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
-import { getSubHeading } from "./utils/getSubHeading";
+// import { getSubHeading } from "./utils/getSubHeading";
 
 function App() {
   function addItem(newTodoName) {
@@ -40,12 +40,10 @@ function App() {
   ]);
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <div>
-          <h1>Todo List</h1>
-          <h2>{getSubHeading(todos.length)}</h2>
-        </div>
+    <>
+      <h1>TODO LIST</h1>
+      {/* <h2>{getSubHeading(todos.length)}</h2> */}
+      <div className={styles.wrapperButton}>
         {!isFormShown && (
           <button
             onClick={() => {
@@ -56,22 +54,24 @@ function App() {
             +
           </button>
         )}
-      </header>
-      {isFormShown && (
-        <Form onFormSubmit={(newTodoName) => addItem(newTodoName)} />
-      )}
-      <ul>
-        {todos.map(({ name, done, id }) => (
-          <TodoItem
-            key={id}
-            name={name}
-            done={done}
-            onDeleteButtonClick={() => removeItem(id)}
-            onDoneButtonClick={() => doneItem(id)}
-          />
-        ))}
-      </ul>
-    </div>
+        {isFormShown && (
+          <Form onFormSubmit={(newTodoName) => addItem(newTodoName)} />
+        )}
+      </div>
+      <div className={styles.wrapper}>
+        <ul>
+          {todos.map(({ name, done, id }) => (
+            <TodoItem
+              key={id}
+              name={name}
+              done={done}
+              onDeleteButtonClick={() => removeItem(id)}
+              onDoneButtonClick={() => doneItem(id)}
+            />
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

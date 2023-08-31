@@ -2,14 +2,26 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import { FaPlus } from "react-icons/fa";
 import styles from "./Form.module.css";
+import { WrongMessage } from "../WrongMessage/WrongMessage/";
 
 export function Form({ onFormSubmit }) {
   const [inputValue, setInputValue] = useState("");
+  const [showErrorMessage, setErrorMessage] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (inputValue.trim() === "") {
+      setErrorMessage(true);
+    } else {
+      setErrorMessage(false);
+      onFormSubmit(inputValue);
+    }
+  };
+
   return (
     <form
       onSubmit={(event) => {
-        event.preventDefault();
-        onFormSubmit(inputValue);
+        handleSubmit(event);
       }}
       className={styles.form}
     >
@@ -23,6 +35,7 @@ export function Form({ onFormSubmit }) {
       <Button>
         <FaPlus />
       </Button>
+      {showErrorMessage && <WrongMessage />}
     </form>
   );
 }
