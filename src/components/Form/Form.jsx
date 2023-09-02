@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { FaPlus } from "react-icons/fa";
+import { Alert } from "../Alert/Alert";
 import styles from "./Form.module.css";
-import { WrongMessage } from "../WrongMessage/WrongMessage/";
 
 export function Form({ onFormSubmit }) {
   const [inputValue, setInputValue] = useState("");
-  const [showErrorMessage, setErrorMessage] = useState(false);
+  const [showAlert, setAlert] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue.trim() === "") {
-      setErrorMessage(true);
+      setAlert(true);
     } else {
-      setErrorMessage(false);
+      setAlert(false);
       onFormSubmit(inputValue);
     }
   };
@@ -25,6 +25,7 @@ export function Form({ onFormSubmit }) {
       }}
       className={styles.form}
     >
+      {showAlert && <Alert />}
       <input
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
@@ -35,7 +36,6 @@ export function Form({ onFormSubmit }) {
       <Button>
         <FaPlus />
       </Button>
-      {showErrorMessage && <WrongMessage />}
     </form>
   );
 }

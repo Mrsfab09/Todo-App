@@ -2,16 +2,21 @@
   background-color: white;
   border-radius: 4px;
   width: 600px;
-  padding: 20px 30px;
+  padding: 20px 28px;
   list-style-type: none;
   display: flex;
   align-items: center;
   margin-top: 16px;
-  gap: 10px;
+  gap: 15px;
 }
 .name {
   width: 100%;
 }
 .done {
   text-decoration: line-through;
+}
+.button {
+  background: transparent;
+  border: none;
+  cursor: grab;
 }

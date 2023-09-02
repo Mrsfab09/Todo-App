@@ -1,5 +1,6 @@
 import { Button } from "../Button/Button";
-import { FaCheck, FaTrashAlt, FaEdit } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import { FaCheck, FaTrashAlt, FaEdit, FaGripVertical } from "react-icons/fa";
 import styles from "./TodoItem.module.css";
 
 export function TodoItem({
@@ -11,6 +12,11 @@ export function TodoItem({
 }) {
   return (
     <li className={styles.item}>
+      <IconContext.Provider value={{ color: "grey", size: "17px" }}>
+        <button className={styles.button}>
+          <FaGripVertical />
+        </button>
+      </IconContext.Provider>
       <span className={`${styles.name} ${done ? styles.done : ""}`}>
         {name}
       </span>
