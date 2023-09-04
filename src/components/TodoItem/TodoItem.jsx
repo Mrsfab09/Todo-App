@@ -25,12 +25,11 @@ export function TodoItem({
           <Button onClick={onDoneButtonClick}>
             <FaCheck />
           </Button>
-          <Button onClick={onEditButtonClick}>
-            <FaEdit />
-          </Button>
         </>
       )}
-
+      <Button onClick={onEditButtonClick}>
+        <FaEdit />
+      </Button>
       <Button onClick={onDeleteButtonClick}>
         <FaTrashAlt />
       </Button>

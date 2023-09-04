@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { IconContext } from "react-icons";
 import { TiDelete } from "react-icons/ti";
-import { useEffect, useState } from "react";
 
 const StyledAlert = styled.div`
   width: 100%;
@@ -13,7 +11,7 @@ const StyledAlert = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.5s ease-in-out 5s;
+  animation: fadeIn 0.5s ease-in-out;
 
   @keyframes fadeIn {
     0% {
@@ -28,36 +26,11 @@ const StyledAlert = styled.div`
 `;
 
 export function Alert() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    });
-
-    const hideTimer = setTimeout(() => {
-      setIsVisible(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(hideTimer);
-    };
-  }, []);
-
   return (
-    <>
-      {isVisible && (
-        <StyledAlert>
-          <span className="fadeIn">
-            <IconContext.Provider value={{ size: "17px" }}>
-              <TiDelete />
-              The field is empty
-            </IconContext.Provider>
-          </span>
-        </StyledAlert>
-      )}
-    </>
+    <StyledAlert>
+      <TiDelete />
+      <span className="fadeIn">The field is empty</span>
+    </StyledAlert>
   );
 }
 //
