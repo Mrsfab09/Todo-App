@@ -1,5 +1,5 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-000000?style=for-the-badge&logo=vite&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-purple?style=for-the-badge&logo=vite&logoColor=white)
 
 ## Todo App
 <img src="displayApp.jpg" />
