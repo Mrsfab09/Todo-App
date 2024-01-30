@@ -3,6 +3,6 @@
 
 ## Todo App
 <img src="displayApp.jpg" />
-The todo app is a great app for managing your daily schedule and more. The application was written in React using Vite
+This is a project I did during the "Zrozumiec react" course. It was the first project created using react and vite.
 
 ## <a href="https://todo-app-zrozumiec-react.netlify.app/" target="_blank">Check the website here!</a>
